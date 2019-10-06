@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cards from './components/Cards';
+import Navbar from './components/Navbar'
+// import 'datos.json'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  state = {
+    todaLaInfoApi:[]
+  }
+
+  componentDidMount() {
+    fetch('https://uinames.com/api/')
+      .then(response => response.json())
+      .then(datos => this.setState({todaLaInfoApi:datos}))
+  }
+
+  render() {
+    return (
+      <div className="finalCard">
+        <h1>Formulario</h1>
+        <Navbar />
+        <Cards teMandolaInfo={this.state.todaLaInfoApi} />
+        <Cards teMandolaInfo={this.state.todaLaInfoApi} />
+        <Cards teMandolaInfo={this.state.todaLaInfoApi} />
+      </div>
+    );
+  }
 }
 
 export default App;
+
