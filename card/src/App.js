@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://uinames.com/api/')
+    fetch('https://uinames.com/api/?amount=3&ext')
       .then(response => response.json())
       .then(datos => this.setState({todaLaInfoApi:datos}))
   }
@@ -24,8 +24,8 @@ class App extends Component {
         <h1>Formulario</h1>
         <Navbar />
         <Cards teMandolaInfo={this.state.todaLaInfoApi} />
-        <Cards teMandolaInfo={this.state.todaLaInfoApi} />
-        <Cards teMandolaInfo={this.state.todaLaInfoApi} />
+        {/* <Cards teMandolaInfo={this.state.todaLaInfoApi} />
+        <Cards teMandolaInfo={this.state.todaLaInfoApi} /> */}
       </div>
     );
   }
